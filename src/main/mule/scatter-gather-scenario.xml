@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="scatter-gather-scenarioFlow" doc:id="86862763-55f3-4b8b-8453-281cc475e9b2" >
+		<scheduler doc:name="Scheduler" doc:id="76c91476-c1c3-4e3c-b9bc-3d8367ac56d2" >
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Start Logger" doc:id="8c833a4f-56a6-4ad0-a75e-90c407a42bba" message="#[payload]"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="002a7648-6ba2-4729-926b-f7da15266d9f" >
+			<route >
+				<set-payload value="#[100]" doc:name="100" doc:id="95c7c7cc-669f-4d60-bddd-b4bb5528b222" />
+			</route>
+			<route >
+				<set-payload value="#[200]" doc:name="200" doc:id="cabf1629-c8c7-4000-b0ed-6fd08b34e464" />
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="End Logger" doc:id="aee629f2-8228-454c-9104-268d38fd4ff8" message="#[payload]"/>
+	</flow>
+</mule>
